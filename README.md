@@ -22,11 +22,20 @@ The simulator used is provided by Udacity/Nvidia.
 ## 📂 Project Structure
 
 ```
-project-root/
-│── data/                  # Collected images & driving_log.csv
-│── src/                   # Python scripts (training, preprocessing, testing)
-│── requirements.txt       # Python dependencies
-│── README.md              # Project documentation
+data/
+ ├─ IMG/                 # Collected training images
+ │   └─ driving_log.csv  # Driving data
+
+models/
+ └─ model.h5             # Trained CNN model
+
+.gitignore               # Git ignore file
+README.md                # Project documentation
+data_test.ipynb          # Notebook for testing data
+environment.yml          # Conda environment setup file
+model.ipynb              # Notebook for model building/training
+requirements.txt         # Python package dependencies
+TestSimulation.py        # load the model and run the program
 ```
 
 ---
@@ -80,29 +89,22 @@ If the path points to `.venv`, it’s active.
 
 ## 🏎 Running the Project
 
-### **Data Collection**
-
-1. Launch the simulator and select **Training Mode**.
-2. Drive along the track (both directions) to collect images and steering data.
-3. Save the session — data will be stored as `IMG/` (images) and `driving_log.csv`.
-
-### **Training the Model**
-
 ```bash
-python src/train.py
+# 1. Download Anaconda (Nano version) from https://www.anaconda.com/
+
+# 2. Launch the Anaconda shell
+
+# 3. Create the environment from environment.yml
+conda create --name .venv --file environment.yml
+
+# 4. Activate the environment (if not auto-activated)
+conda activate .venv
+
+# 5. Run the simulation script (loads models/model.h5 and starts server)
+python test_simulation.py
+
+# 6. Open the simulator in **Autonomous Mode** and watch the car drive itself.
 ```
-
-### **Testing the Model**
-
-1. Run the testing script:
-
-```bash
-python src/TestSimulation.py
-```
-
-2. Open the simulator in **Autonomous Mode** and watch the car drive itself.
-
----
 
 ## 📦 Dependencies
 
